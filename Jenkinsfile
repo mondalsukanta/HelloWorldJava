@@ -5,7 +5,7 @@ pipeline {
     environment {
         EMAIL_RECIPIENTS = 'sukanta.mondal@yahoo.com'
     }
-        stage('Build with unit testing') {
+        stage('Build') {
             steps {
                 // Run the maven build
                 script {
@@ -14,7 +14,8 @@ pipeline {
                     // **       in the global configuration.
                     echo 'Pulling...' + env.BRANCH_NAME
                     def mvnHome = tool 'Maven 3.5.2'
-                    if (isUnix()) {
+                    if (isUnix()) 
+                    {
                         def targetVersion = getDevVersion()
                         print 'target build version...'
                         print targetVersion
@@ -26,15 +27,15 @@ pipeline {
                         // execute the unit testing and collect the reports
                         //junit '**//*target/surefire-reports/TEST-*.xml'
                         //archive 'target*//*.jar'
-                    } else {
+                    } else 
+                    {
                         bat(/"${mvnHome}\bin\mvn" -Dintegration-tests.skip=true clean package/)
                         def pom = readMavenPom file: 'pom.xml'
                         print pom.version
                         //junit '**//*target/surefire-reports/TEST-*.xml'
                         //archive 'target*//*.jar'
                     }
-                }
-
-            }
-        }
-}
+                }//script
+            }//steps
+        }//stage
+}//pipeline
