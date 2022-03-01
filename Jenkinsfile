@@ -5,7 +5,7 @@ pipeline {
     environment {
         EMAIL_RECIPIENTS = 'sukanta.mondal@yahoo.com'
     }
-        stage('Build') {
+    stage('Build') {
             steps {
                 // Run the maven build
                 script {
@@ -37,5 +37,5 @@ pipeline {
                     }
                 }//script
             }//steps
-        }//stage
+    }//stage
 }//pipeline
