@@ -3,7 +3,7 @@ pipeline {
     agent { label 'java8' }
     // global env variables
     environment {
-        EMAIL_RECIPIENTS = 'mahmoud.romeh@test.com'
+        EMAIL_RECIPIENTS = 'sukanta.mondal@yahoo.com'
     }
         stage('Build with unit testing') {
             steps {
