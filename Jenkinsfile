@@ -21,18 +21,18 @@ pipeline {
                         print 'target build version...'
                         print targetVersion
                         sh "'${mvnHome}/bin/mvn' -Dintegration-tests.skip=true -Dbuild.number=${targetVersion} clean package"
-                        def pom = readMavenPom file: 'pom.xml'
+                        //def pom = readMavenPom file: 'pom.xml'
                         // get the current development version
-                        developmentArtifactVersion = "${pom.version}-${targetVersion}"
-                        print pom.version
+                        //developmentArtifactVersion = "${pom.version}-${targetVersion}"
+                        //print pom.version
                         // execute the unit testing and collect the reports
                         //junit '**//*target/surefire-reports/TEST-*.xml'
                         //archive 'target*//*.jar'
                     } else 
                     {
                         bat(/"${mvnHome}\bin\mvn" -Dintegration-tests.skip=true clean package/)
-                        def pom = readMavenPom file: 'pom.xml'
-                        print pom.version
+                        //def pom = readMavenPom file: 'pom.xml'
+                        //print pom.version
                         //junit '**//*target/surefire-reports/TEST-*.xml'
                         //archive 'target*//*.jar'
                     }
